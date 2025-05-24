@@ -14,10 +14,10 @@ This project demonstrates how to implement distributed tracing in java spring bo
 
 This application require Eureka service registry
 
-```
-cd discovery-server
-mvn clean install -Dmaven.test.skip
-docker build -t discovery-service:1.0.1 .
+```bash
+cd discovery-server && \
+mvn clean install -Dmaven.test.skip && \
+docker build -t discovery-service:1.0.1 . && \
 docker run -d --name discovery-service -p 8761:8761 discovery-service:1.0.1
 ```
 
@@ -93,3 +93,13 @@ Open http://localhost:9090 and perform actions that will capture traces to signo
 View traces, logs and metrics:
 
 - View the metrics in signoz, go to http://localhost:3301/application
+
+
+## 자원 정리
+
+```bash
+cd signoz/deploy/docker && \
+docker compose down -v && \
+docker stop mysql-signoz && \
+docker stop discovery-service
+```
