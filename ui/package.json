@@ -1,0 +1,12 @@
+{
+  "name": "ui",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "serve -l 9090 ."
+  },
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

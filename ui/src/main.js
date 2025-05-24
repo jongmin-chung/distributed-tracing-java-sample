@@ -1,5 +1,5 @@
 // Application urls
-const DEFAULT_SIGNOZ_URL = 'http://localhost:3301/application'
+const DEFAULT_SIGNOZ_URL = 'http://localhost:8080/'
 const USER_SERVICE_URL = 'http://localhost:8081/users'
 const PAYMENT_SERVICE_URL = 'http://localhost:8082/payment'
 const ORDER_SERVICE_URL = 'http://localhost:8083/orders'

@@ -27,30 +27,52 @@ Run `http://localhost:8761`
 
 Start individual microservice using below commands
 
+## Prerequisites
+
+- Java 8
+- Maven (`brew install maven`)
+
+
+0. Infrastructure
+
+```bash
+$ git clone -b main https://github.com/SigNoz/signoz.git && \
+cd signoz/deploy/docker && \
+docker compose up -d --remove-orphans
+```
+
+```bash
+docker run --name mysql-signoz \
+  -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+  -e MYSQL_DATABASE=signoz \
+  -p 3307:3306 \
+  -d mysql:latest
+```
+
 1. UserService
 
-```
-cd user-service
-mvn clean install -Dmaven.test.skip
-sh ./script/start.sh
+```bash
+cd user-service && \
+mvn clean install -Dmaven.test.skip 
+sh ./scripts/start.sh
 
 ```
 
 2. OrderService
 
-```
+```bash
 cd order-service
 mvn clean install -Dmaven.test.skip
-sh ./script/start.sh
+sh ./scripts/start.sh
 
 ```
 
 3. PaymentService
 
-```
-cd payment-service
-mvn clean install -Dmaven.test.skip
-sh ./script/start.sh
+```bash
+cd payment-service && \
+mvn clean install -Dmaven.test.skip && \
+sh ./scripts/start.sh
 
 ```
 
@@ -58,10 +80,11 @@ sh ./script/start.sh
 
 To capture traces from above microservice run the [sample-ui](ui) application using below commands
 
-```
-npm install -g serve
-serve -l 9090 ui
-```
+```bash
+cd ui && \
+pnpm install && \
+pnpm run dev
+````
 
 Open http://localhost:9090 and perform actions that will capture traces to signoz
 
